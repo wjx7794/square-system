@@ -19,7 +19,7 @@ export default defineConfig({
       prefixCls: 'dbc',
     },
     // 配置 antd@5 的 theme token，等同于配置 configProvider.theme，且该配置项拥有更高的优先级
-    theme: { token: { colorPrimary: 'red' } },
+    theme: { token: { colorPrimary: '#0958d9' } },
   },
   access: {},
   model: {},

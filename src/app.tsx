@@ -73,9 +73,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       return <div style={{ backgroundColor: 'skyblue' }}>menuFooterRender</div>;
     },
     // 自定义页脚的 render 方法
-    footerRender: () => {
-      return <div style={{ backgroundColor: 'skyblue' }}>footerRender</div>;
-    },
+    // footerRender: () => {
+    //   return <div style={{ backgroundColor: 'skyblue' }}>footerRender</div>;
+    // },
     /**---------------------------------- render 相关方法 end ------------------------------------*/
   };
 };
