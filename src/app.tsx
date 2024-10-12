@@ -4,6 +4,7 @@
  * @Date 20241011
  */
 import { qiankun, useQiankunStateForSlave } from '@/config/micro';
+import { request } from '@/config/request';
 import { menuData } from '@/config/routes';
 import { RunTimeLayoutConfig } from '@umijs/max';
 
@@ -80,4 +81,4 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   };
 };
 
-export { qiankun, useQiankunStateForSlave };
+export { qiankun, request, useQiankunStateForSlave };
