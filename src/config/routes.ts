@@ -15,6 +15,8 @@ export const routes = [
       { path: '/home/summary', component: '@/pages/Summary' },
       { path: '/home/introduction', component: '@/pages/Introduction' },
     ],
+    // 权限定义返回值的某个 key
+    access: 'showHome',
   },
   // 子应用 - 配置 blog 关联的路由
   {

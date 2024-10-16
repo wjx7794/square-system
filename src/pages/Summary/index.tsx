@@ -7,6 +7,8 @@ const Summary: React.FC = () => {
   // [全局数据] modal
   const { count, increment } = useModel('global');
 
+  console.log('🍎access =>', access);
+
   return (
     <PageContainer
       ghost
@@ -16,6 +18,12 @@ const Summary: React.FC = () => {
     >
       <Access accessible={access.canSeeAdmin}>
         <Button>Summary</Button>
+        <Access
+          accessible={access.showSummary}
+          fallback={<div>Can not read content.</div>}
+        >
+          content
+        </Access>
         {/* 全局数据 */}
         <Button onClick={increment} style={{ marginLeft: 10 }}>
           {count}

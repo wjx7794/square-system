@@ -78,6 +78,10 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     //   return <div style={{ backgroundColor: 'skyblue' }}>footerRender</div>;
     // },
     /**---------------------------------- render 相关方法 end ------------------------------------*/
+    // 自定义 403 页面
+    unAccessible: <div>'unAccessible'</div>,
+    // 自定义 404 页面
+    noFound: <div>'noFound'</div>,
   };
 };
 
