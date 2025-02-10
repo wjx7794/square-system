@@ -9,6 +9,20 @@ const Summary: React.FC = () => {
 
   console.log('🍎access =>', access);
 
+  // const fetchData = async () => {
+  //   try {
+  //     const res = await request('http://localhost:3000/', {});
+  //     console.log('🍎请求成功=>', res);
+  //   } catch (e: any) {
+  //     console.log('🍏请求失败 =>', e?.info);
+  //   }
+  // };
+
+  // // 在组件中调用
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
   return (
     <PageContainer
       ghost

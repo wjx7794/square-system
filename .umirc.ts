@@ -1,3 +1,9 @@
+/**
+ * 「构建时配置」
+ * 注意: 这里不能使用路径别名
+ * [https://v3.umijs.org/zh-CN/config#alias]
+ */
+
 import { defineConfig } from '@umijs/max';
 import { routes } from './src/config/routes';
 
@@ -6,6 +12,7 @@ export default defineConfig({
   qiankun: {
     master: {},
   },
+  // antd 组件库
   antd: {
     // 开启暗色主题，默认 false
     dark: false,
@@ -25,8 +32,15 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
+  // 布局与菜单
   layout: {},
   // 路由配置
   routes,
   npmClient: 'pnpm',
+  /**
+   * [配置 favicon]
+   * - 方法1: links: [{ rel: 'icon', href: '/imgs/square.svg' }],
+   * - 方法2: favicons: [],
+   */
+  favicons: ['/imgs/square.svg'],
 });

@@ -14,11 +14,11 @@ export const request: RequestConfig = {
      * @param data 后端返回的数据
      */
     errorThrower(res) {
-      const { success, data, message, code } = res;
+      const { success, data, message, code, errMsg } = res;
       if (!success) {
         const error: any = new Error('Request Error');
         error.name = ErrorName;
-        error.info = { success, data, message, code };
+        error.info = { success, data, message, code, errMsg };
         // 抛出自制的错误
         throw error;
       }
@@ -32,7 +32,7 @@ export const request: RequestConfig = {
       if (opts?.skipErrorHandler) throw error;
       // 提示后端的错误信息
       if (error.name === ErrorName) {
-        message.error(error?.info?.message);
+        message.error(error?.info?.message || error?.info?.errMsg);
       }
     },
   },
@@ -41,7 +41,8 @@ export const request: RequestConfig = {
   requestInterceptors: [
     (config) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config.url.concat('?a=1');
+      const url = config.url;
+      // const url = config.url.concat('?a=1');
       return { ...config, url };
     },
   ],

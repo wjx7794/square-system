@@ -18,6 +18,18 @@ export const routes = [
     // 权限定义返回值的某个 key
     access: 'showHome',
   },
+  // 登陆
+  {
+    name: '登陆',
+    path: '/login',
+    component: '@/pages/Login',
+  },
+  // 注册
+  {
+    name: '注册',
+    path: '/registry',
+    component: '@/pages/Registry',
+  },
   // 子应用 - 配置 blog 关联的路由
   {
     path: '/blog/*',
@@ -33,6 +45,7 @@ export const routes = [
 
 /**
  * 左侧菜单配置
+ * 参考: [https://procomponents.ant.design/components/layout#menu]
  */
 export const menuData = [
   // 首页
@@ -58,6 +71,26 @@ export const menuData = [
       { path: '/home/introduction', name: '关于我', hideInBreadcrumb: true },
     ],
   },
+  // 登陆
+  {
+    // 菜单的名字
+    name: '登陆',
+    path: '/login',
+    // 在菜单中隐藏自己和子节点
+    hideInMenu: true,
+    // 不展示菜单
+    menuRender: false,
+  },
+  // 注册
+  {
+    // 菜单的名字
+    name: '注册',
+    path: '/registry',
+    // 在菜单中隐藏自己和子节点
+    hideInMenu: true,
+    // 不展示菜单
+    menuRender: false,
+  },
   // 子应用 - 博客
   {
     // 菜单的名字
@@ -81,7 +114,7 @@ export const menuData = [
       { path: '/blog/detail', name: '详情', hideInBreadcrumb: true },
     ],
   },
-  // 子应用 - 博客
+  // 子应用 - 组件
   {
     // 菜单的名字
     name: '组件',

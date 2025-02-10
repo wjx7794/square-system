@@ -1,26 +1,40 @@
 /**
- * 运行时配置
+ * [运行时配置]
  * @author Jack
  * @Date 20241011
  */
+// 内部模块
+import { RunTimeLayoutConfig } from '@umijs/max';
+// 外部模块
+import Login from '@/components/Login';
 import { qiankun, useQiankunStateForSlave } from '@/config/micro';
 import { request } from '@/config/request';
 import { menuData } from '@/config/routes';
-import { RunTimeLayoutConfig } from '@umijs/max';
 
-// 全局初始化数据配置，用于 Layout 用户信息和权限初始化
-// 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
+/**
+ * 「全局初始状态」
+ * 1. getInitialState() 的返回值将成为全局初始状态
+ * 2. 全局初始化数据配置，用于 Layout 用户信息和权限初始化
+ * 详见: [https://umijs.org/docs/api/runtime-config#getinitialstate]
+ * @returns
+ */
 export async function getInitialState(): Promise<any> {
   return { title: '白菜广场', menuData };
 }
 
+/**
+ * [布局与菜单]
+ * 1. 运行时配置支持所有的构建时配置并透传给 @ant-design/pro-layout
+ * 详见: [https://procomponents.ant.design/components/layout/#prolayout]
+ * @returns
+ */
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   const { title, menuData } = initialState as any;
 
   return {
-    // logo
+    // 显示在布局左上角产品名前的产品 Logo
     logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
-    // 左上角标题
+    // 显示在布局左上角的产品名，默认值为包名
     title,
     // 菜单相关
     menu: {
@@ -54,16 +68,17 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       return <div style={{ backgroundColor: 'skyblue' }}>menuExtraRender</div>;
     },
     // 自定义头标题的方法，mix 模式和 top 模式下生效
-    headerTitleRender: () => {
-      return <div style={{ backgroundColor: 'skyblue' }}>menuExtraRender</div>;
-    },
+    // headerTitleRender: () => {
+    //   return <div style={{ backgroundColor: 'skyblue' }}>menuExtraRender</div>;
+    // },
     // 自定义头内容的方法
-    headerContentRender: () => {
-      return <div style={{ backgroundColor: '#ccc' }}>headerContentRender</div>;
-    },
+    // headerContentRender: () => {
+    //   return <div style={{ backgroundColor: '#ccc' }}>headerContentRender</div>;
+    // },
     // 展示用户名、头像、退出登录相关组件
     rightRender: () => {
-      return <div style={{ backgroundColor: 'skyblue' }}>rightRender</div>;
+      return <Login />;
+      // return <div style={{ backgroundColor: 'skyblue' }}>rightRender</div>;
     },
     // 渲染 logo 和 title
     menuHeaderRender: () => {
