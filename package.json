@@ -2,7 +2,7 @@
   "private": true,
   "author": "wjx7794 <wjx7794@163.com>",
   "scripts": {
-    "build": "max build",
+    "build": "cross-env PORT=8000 RUN_ENV=PROD max build",
     "dev": "cross-env PORT=8000 RUN_ENV=STAGING max dev",
     "format": "prettier --cache --write .",
     "postinstall": "max setup",
