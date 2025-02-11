@@ -25,7 +25,7 @@ const useLogin = (params: any) => {
       // 刷新页面
       setTimeout(() => {
         location.reload();
-      }, 500);
+      }, 1000);
     } catch (e: any) {
       console.log('🍎 getLogout =>', e?.info);
     }

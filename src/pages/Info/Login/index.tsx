@@ -1,46 +1,54 @@
+/**
+ * [登陆]
+ * @author Jack
+ * @Date 2025-02-11
+ */
+
 // 内部模块
 import { PageContainer } from '@ant-design/pro-components';
 import { Button, Form, Input, message } from 'antd';
+import { useCallback } from 'react';
 // 外部模块
-import { fetchRegistry } from '@/utils/api';
+import { RUN_URL } from '@/constants/index';
+import { fetchLogin } from '@/utils/api';
 
-const Registry: React.FC = () => {
-  // 注册
-  const onFinish = async (values: any) => {
+const Login: React.FC = () => {
+  // 登陆
+  const onLogin = useCallback(async (values: any) => {
     const { userName, password } = values || {};
     try {
-      const res = await fetchRegistry({
+      const res = await fetchLogin({
         userName,
         password,
       });
       message.success(res?.message);
       // 刷新页面
       setTimeout(() => {
-        location.href = 'http://localhost:8000/';
+        location.href = RUN_URL;
       }, 1000);
     } catch (e: any) {
-      console.log('🍎fetchRegistry =>', e?.info);
+      console.log('🍎fetchLogin =>', e?.info);
     }
-  };
+  }, []);
 
-  // 预校验失败
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('校验失败 =>', errorInfo);
-  };
+  // 校验失败
+  const onFailed = useCallback((errorInfo: any) => {
+    console.log('🍎 校验失败 =>', errorInfo);
+  }, []);
 
   return (
     <PageContainer
       ghost
       header={{
-        title: '注册',
+        title: '登陆',
       }}
     >
       <Form
         name="basic"
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
+        onFinish={onLogin}
+        onFinishFailed={onFailed}
         autoComplete="off"
       >
         {/* 账号 */}
@@ -61,10 +69,10 @@ const Registry: React.FC = () => {
           <Input.Password />
         </Form.Item>
 
-        {/* 提交 */}
+        {/* 登陆 */}
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
-            注册
+            登陆
           </Button>
         </Form.Item>
       </Form>
@@ -72,4 +80,4 @@ const Registry: React.FC = () => {
   );
 };
 
-export default Registry;
+export default Login;

@@ -8,6 +8,10 @@ import { defineConfig } from '@umijs/max';
 import { routes } from './src/config/routes';
 
 export default defineConfig({
+  // 注入环境变量 [https://github.com/umijs/umi/issues/7799]
+  define: {
+    'process.env': { ...process.env },
+  },
   // 微前端
   qiankun: {
     master: {},

@@ -18,18 +18,36 @@ export const routes = [
     // 权限定义返回值的某个 key
     access: 'showHome',
   },
-  // 登陆
+  /**---------------------------------------- 账户相关 start ----------------------------------------*/
   {
-    name: '登陆',
-    path: '/login',
-    component: '@/pages/Login',
+    name: '账户相关',
+    path: '/info',
+    routes: [
+      {
+        name: '登陆',
+        path: '/info/login',
+        component: '@/pages/Info/Login',
+      },
+      {
+        name: '注册',
+        path: '/info/registry',
+        component: '@/pages/Info/Registry',
+      },
+      {
+        name: '修改',
+        path: '/info/edit',
+        component: '@/pages/Info/Edit',
+      },
+      {
+        name: '注销',
+        path: '/info/remove',
+        component: '@/pages/Info/Remove',
+      },
+    ],
+    // 权限定义返回值的某个 key
+    access: 'showHome',
   },
-  // 注册
-  {
-    name: '注册',
-    path: '/registry',
-    component: '@/pages/Registry',
-  },
+  /**---------------------------------------- 账户相关 end ----------------------------------------*/
   // 子应用 - 配置 blog 关联的路由
   {
     path: '/blog/*',
@@ -71,26 +89,53 @@ export const menuData = [
       { path: '/home/introduction', name: '关于我', hideInBreadcrumb: true },
     ],
   },
-  // 登陆
+  /**---------------------------------------- 账户相关 start ----------------------------------------*/
   {
     // 菜单的名字
-    name: '登陆',
-    path: '/login',
-    // 在菜单中隐藏自己和子节点
+    name: '账户相关',
+    path: '/info',
+    // 在菜单中隐藏子节点
+    hideChildrenInMenu: false,
+    // layout 的菜单模式
+    layout: 'mix',
     hideInMenu: true,
-    // 不展示菜单
     menuRender: false,
+    children: [
+      {
+        path: '/info/login',
+        name: '登陆',
+        // 在面包屑中隐藏
+        hideInBreadcrumb: true,
+        // 在菜单中隐藏自己和子节点
+        hideInMenu: false,
+      },
+      {
+        path: '/info/registry',
+        name: '注册',
+        // 在面包屑中隐藏
+        hideInBreadcrumb: true,
+        // 在菜单中隐藏自己和子节点
+        hideInMenu: false,
+      },
+      {
+        path: '/info/edit',
+        name: '修改',
+        // 在面包屑中隐藏
+        hideInBreadcrumb: true,
+        // 在菜单中隐藏自己和子节点
+        hideInMenu: false,
+      },
+      {
+        path: '/info/remove',
+        name: '注销',
+        // 在面包屑中隐藏
+        hideInBreadcrumb: true,
+        // 在菜单中隐藏自己和子节点
+        hideInMenu: false,
+      },
+    ],
   },
-  // 注册
-  {
-    // 菜单的名字
-    name: '注册',
-    path: '/registry',
-    // 在菜单中隐藏自己和子节点
-    hideInMenu: true,
-    // 不展示菜单
-    menuRender: false,
-  },
+  /**---------------------------------------- 账户相关 end ----------------------------------------*/
   // 子应用 - 博客
   {
     // 菜单的名字
